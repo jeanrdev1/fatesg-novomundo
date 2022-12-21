@@ -7,8 +7,6 @@ import java.util.Map;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.HttpClientErrorException.Unauthorized;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.develop.authentication_api.domain.service.TokenService;
@@ -27,11 +25,11 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 
     private final TokenService service;
 
-    //Metodo que intercepta cada requisição que o spring recebe
+    //Método que intercepta cada requisição que o spring recebe
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (request.getServletPath().equals("/register") || request.getServletPath().equals("/login")) {
-            // Seguir o fluxo padrao do spring Controller>Service>Repository
+            // Seguir o fluxo padrão do spring Controller>Service>Repository
             filterChain.doFilter(request, response);
         } else {
             try {
@@ -51,7 +49,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
                 //Retornando o objeto com erro
                 new ObjectMapper().writeValue(response.getOutputStream(), error);
             }
-            // Seguir o fluxo padrao do spring Controller>Service>Repository
+            // Seguir o fluxo padrão do spring Controller>Service>Repository
             filterChain.doFilter(request, response);
         }
     }
