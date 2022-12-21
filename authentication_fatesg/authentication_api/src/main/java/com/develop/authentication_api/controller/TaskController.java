@@ -15,7 +15,6 @@ import com.develop.authentication_api.domain.entity.dto.TaskDTO;
 import com.develop.authentication_api.domain.service.TaskService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 
 @RestController

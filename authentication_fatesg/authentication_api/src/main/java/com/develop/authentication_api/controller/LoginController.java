@@ -1,5 +1,6 @@
 package com.develop.authentication_api.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,11 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
     
     private final TokenService tokenService;
+
+    @GetMapping("test")
+    public String validade() {
+        return "";
+    }
 
     @PostMapping("login")
     public Token login(@RequestBody LoginDTO dto) {
