@@ -1,5 +1,6 @@
 import 'package:authentication_app/domain/entity/login_dto.dart';
 import 'package:authentication_app/domain/service/auth_service.dart';
+import 'package:authentication_app/view/register_view.dart';
 import 'package:authentication_app/view/task_view.dart';
 import 'package:flutter/material.dart';
 
@@ -25,21 +26,40 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: usernameController,
-            ),
-            TextField(
-              controller: passwordController,
-            ),
-            ElevatedButton(
-              onPressed: () => login(),
-              child: const Text('LOGIN'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network('https://www.thisiscolossal.com/wp-content/uploads/2019/02/d1aehdnbq0h21-960x960@2x.jpg'),
+              TextField(
+                controller: usernameController,
+              ),
+              TextField(
+                controller: passwordController,
+              ),
+              ElevatedButton(
+                onPressed: () => login(),
+                child: const Text('LOGIN'),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 50,
+        child: Center(
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RegisterView(),
+                ),
+              );
+            },
+            child: const Text('Create Account'),
+          ),
         ),
       ),
     );
